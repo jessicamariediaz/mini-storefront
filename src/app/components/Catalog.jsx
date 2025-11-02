@@ -1,26 +1,24 @@
 'use client';
 import {useEffect, useState} from 'react';
+import ProductList from './ProductList';
 
 export default function Catalog() {
-  const [sushi, setSushi] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     fetch('/api/products')
       .then((r) => r.json())
-      .then(setSushi)
-      .catch((err) => console.error('Error fetching sushi:', err));
+      .then(setProducts)
+      .catch(console.error);
   }, []);
 
+  const addToCart = (p) => setCart((prev) => [...prev, p]);
+
   return (
-    <div>
-      <h2 className="text-2xl font-semibold mb-2">My Sushi Menu</h2>
-      <ul className="space-y-2">
-        {sushi.map((item) => (
-          <li key={item.id}>
-            {item.name} — ${item.price} ({item.category})
-          </li>
-        ))}
-      </ul>
+    <div className="space-y-4">
+      <h2 className="text-2xl font-semibold mb-2">Sushi Menu</h2>
+      <ProductList products={products} onAdd={addToCart} />
     </div>
   );
 }
