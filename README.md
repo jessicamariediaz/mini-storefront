@@ -1,4 +1,4 @@
-Built a small Sushi Mini-Storefront using the Next.js App Router. You must use JavaScript + JSX (no TypeScript allowed).
+Built a small Sushi Mini-Storefront using the Next.js App Router. Used JavaScript + JSX
 
 This project covers:
 
