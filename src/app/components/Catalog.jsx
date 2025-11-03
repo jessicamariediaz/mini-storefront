@@ -38,7 +38,7 @@ export default function Catalog() {
       );
     }, 5000);
 
-    // Cleanup to stop interval when unmounted
+    // Cleanup
     return () => clearInterval(interval);
   }, []);
 
